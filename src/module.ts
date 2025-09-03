@@ -205,17 +205,6 @@ export default defineNuxtModule<ModuleOptions>({
         logger.warn('Service key detected in SPA mode. Service key will be excluded from client bundle.')
       }
 
-      // Enhanced cookie security in production
-      const productionCookieDefaults = {
-        secure: !options.devMode,
-        sameSite: 'lax' as const,
-      }
-
-      const finalCookieOptions = {
-        ...productionCookieDefaults,
-        ...options.cookieOptions,
-      }
-
       // Generate secure cookie prefix
       let cookiePrefix = options.cookiePrefix
       if (!cookiePrefix) {
